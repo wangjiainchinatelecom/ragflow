@@ -39,9 +39,10 @@ def main(args):
             "bbox": [b[0][0], b[0][1], b[1][0], b[-1][1]],
             "type": "ocr",
             "score": 1} for b, t in bxs if b[0][0] <= b[1][0] and b[0][1] <= b[-1][1]]
+        print(f"------------------------ {i} -------------------------")
         img = draw_box(images[i], bxs, ["ocr"], 1.)
         img.save(outputs[i], quality=95)
-        with open(outputs[i] + ".txt", "w+") as f:
+        with open(outputs[i] + ".txt", "w+" ,encoding="utf-8") as f:
             f.write("\n".join([o["text"] for o in bxs]))
 
 
@@ -54,3 +55,4 @@ if __name__ == "__main__":
                         default="./ocr_outputs")
     args = parser.parse_args()
     main(args)
+

@@ -205,3 +205,7 @@ def traversal_files(base):
         for f in fs:
             fullname = os.path.join(root, f)
             yield fullname
+
+if __name__ == '__main__':
+    print(os.getenv("RAG_PROJECT_BASE") or os.getenv("RAG_DEPLOY_BASE"))
+    print(get_project_base_directory())

@@ -236,10 +236,10 @@ def chunk(filename, binary=None, from_page=0, to_page=10000000000,
             tokenize(d, "; ".join(row_txt), eng)
             res.append(d)
 
-        KnowledgebaseService.update_parser_config(
-            kwargs["kb_id"], {"field_map": {k: v for k, v in clmns_map}})
+        # KnowledgebaseService.update_parser_config(
+        #     kwargs["kb_id"], {"field_map": {k: v for k, v in clmns_map}})
     callback(0.35, "")
-
+    print(res)
     return res
 
 

@@ -37,18 +37,21 @@ def draw_box(im, result, lables, threshold=0.5):
     for dt in result:
         color = tuple(clsid2color[dt["type"]])
         xmin, ymin, xmax, ymax = dt["bbox"]
+        # print(xmin,ymin,xmax,ymax)
         draw.line(
             [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin),
              (xmin, ymin)],
             width=draw_thickness,
             fill=color)
-
+        # fill_color = (255, 255, 0, 32)
+        # draw.rectangle([xmin, ymin,xmax, ymax], outline=None, fill=fill_color)
+        # draw.rectangle([xmin, ymin,xmax, ymax], outline=None, fill=fill_color)
         # draw label
-        text = "{} {:.4f}".format(dt["type"], dt["score"])
-        tw, th = imagedraw_textsize_c(draw, text)
-        draw.rectangle(
-            [(xmin + 1, ymin - th), (xmin + tw + 1, ymin)], fill=color)
-        draw.text((xmin + 1, ymin - th), text, fill=(255, 255, 255))
+        # text = "{} {:.4f}".format(dt["type"], dt["score"])
+        # tw, th = imagedraw_textsize_c(draw, text)
+        # draw.rectangle(
+        #     [(xmin + 1, ymin - th), (xmin + tw + 1, ymin)], fill=color)
+        # draw.text((xmin + 1, ymin - th), text, fill=(255, 255, 255))
     return im
 
 

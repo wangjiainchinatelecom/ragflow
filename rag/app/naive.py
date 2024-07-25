@@ -90,9 +90,9 @@ class Pdf(PdfParser):
         self._text_merge()
         callback(0.67, "Text merging finished")
         tbls = self._extract_table_figure(True, zoomin, True, True)
-        #self._naive_vertical_merge()
+        # self._naive_vertical_merge()
         self._concat_downward()
-        #self._filter_forpages()
+        # self._filter_forpages()
 
         cron_logger.info("layouts: {}".format(timer() - start))
         return [(b["text"], self._line_tag(b, zoomin))
@@ -202,4 +202,15 @@ if __name__ == "__main__":
     def dummy(prog=None, msg=""):
         pass
 
-    chunk(sys.argv[1], from_page=0, to_page=10, callback=dummy)
+    doc_path = r"E:\Users\wangjia\Documents\001新智文档\功能测试文档\建筑类\GB 55001-2021 工程结构通用规范.pdf"
+    res = chunk(doc_path, from_page=0, to_page=10, callback=dummy)
+    count = 0
+    for r in res:
+        # img = r.get("image")
+        # count+=1
+        # img.save(f"{count}.png", quality=95)
+        # with open(f"{count}.txt", "w+" ,encoding="utf-8") as f:
+        #     f.write(r.get("content_with_weight"))
+        print(r.get("content_with_weight"))
+        print("-"*20)
+    # print(res)
